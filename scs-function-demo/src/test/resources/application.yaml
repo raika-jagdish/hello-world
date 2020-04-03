@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    stream:
+      default-binder: kafka
+      bindings:
+        input:
+          destination: test-topic-1
+          #content-type: text/plain
+          group: input-group
+        output:
+          destination: test-topic-1
+          group: output-group
+          #content-type: text/plain
+          producer:
+            header-mode: headers
+          consumer:
+            header-mode: headers
+      kafka:
+        binder:
+          header-mapper-bean-name: headerMapper
+  application:
+    name: kafka-impl
